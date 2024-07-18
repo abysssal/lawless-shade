@@ -1,7 +1,7 @@
-# Introduction to {gameName}
+# Introduction to Lawless Shade
 
 ## Game Summary Pitch
-{gameName} is an action-platformer where you throw potions in self defense at monsters trying to push you out of the dark. 
+Lawless Shade is an action-platformer where you throw potions in self defense at monsters trying to push you out of the dark. 
 ## Inspiration
 ***Noita*** - I was watching Thor's stream prior to the start of the game jam, and he was playing Noita. I really liked how the wands worked, and how there were so many particles. It reminded me of fluids, and then, potions.
 
@@ -27,20 +27,32 @@ You start at the beginning of an old caste, to which you'll need to navigate thr
 I took the theme more so at face value. Shadows reminded me of SCP-001, S.D. Locke's proposal (see above for more details), and so while I think many people will do something like "dark good, light bad", I think my implementation of it is unique. Alchemy reminded me of how the wands in Noita worked and how splash potions and lingering potions work in Minecraft. I decided to combine the platforming of Noita and the functionality potions of Minecraft to create the Alchemy portion of the theme.
 ## Primary Mechanics
 - **Potions**
-	- Potions are the weapons you use against the enemies. You can also use the potions on yourself
+	- Potions are the weapons you use against the enemies. You can also use the potions on yourself, so be careful!
+- **Enemies**
+	- Enemies do not hurt you. Instead, they drag you into the light, which is dangerous.
+	- Enemy Types:
+		- Walkers
+			- Walks toward you, and pulls you into the light
+		- Impulsives
+			- Spits at you in the direction you're running
+		- Paras 
+			- Will run up to you, but instead of dragging you, they stun you and die, making you much more vulnerable
+		- 
+- **Windows**
+	- Initially, they're all blocked to make sure no light can get in. Enemies can destroy the barricade and let light in, making it more difficult to navigate for the player
 
 ## Secondary Mechanics
 
 # Art
 
 ## Design
-
+A dark approach will be taken for the art, since you're hiding in a dark facility (duh), and it's made to provide a sense of uncertainty when entering into the map. The art style will be made with pixel art, using Piskel to make the sprites, and GIMP to design the levels.
 # Audio
 
 ## Music
-
+The music will be upbeat, but in a darker tone, probably with a lot of synth in the track(s). The reason for this style is because the game is very action packed, but the art is also in a somewhat horror style, so I think it would make sense. 
 ## Sound Effects
-
+Sound effects will be generated with JSFXR to complement the pixel art style of the game. There might be a few sounds (ex: a heartbeat sound) for when you get close to losing the game.
 # Game Experience
 
 ## UI
@@ -48,3 +60,7 @@ I took the theme more so at face value. Shadows reminded me of SCP-001, S.D. Loc
 ## Controls
 
 # Development Timeline
+***7/18/2024 - 7/31/2024***
+- 7/18 Tasks:
+	- [ ] Create a functional player, with movement on a floor
+	- [ ] Start making an item system 
