@@ -13,7 +13,7 @@ Lawless Shade is an action-platformer where you throw potions in self defense at
 ## Platform 
 It will be released on the web for desktop platforms. I might make a mobile version to put on https://poki.com in the future but for the jam, desktop web works fine.
 ## Development Software
-I will be using Defold for this project, since it's simple, easy to use, and very efficient.
+I will be using Godot for this project, since it's simple, easy to use, and very efficient.
 My art software will likely be Piskel, but if I need to edit something large (i.e. a tilesheet), then I'll use GIMP for that. Lastly, sound effects will likely come from JSFXR and music will either be found online or made with LMMS.
 ## Genre
 I was debating between calling it a metroidvania or an action-platformer, but metroidvanias normally have very spacious levels, and my game doesn't really have the biggest levels, so I can't call it that, so I'm calling it an action-platformer.

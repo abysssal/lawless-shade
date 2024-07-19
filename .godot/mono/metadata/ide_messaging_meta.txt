@@ -1,0 +1,2 @@
+﻿33375
+/app/bin/godot-bin
