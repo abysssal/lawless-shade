@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bguauhpbv5is3"]
+
+[ext_resource type="PackedScene" uid="uid://0253q7vlshtb" path="res://scenes/player.tscn" id="1_2c1l2"]
+[ext_resource type="Script" path="res://code/game.gd" id="1_kofgy"]
+[ext_resource type="PackedScene" uid="uid://cbacn268rv46v" path="res://scenes/wall.tscn" id="2_a804h"]
+
+[sub_resource type="GDScript" id="GDScript_dtapi"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_kofgy")
+
+[node name="Player" parent="." instance=ExtResource("1_2c1l2")]
+position = Vector2(582, 295)
+
+[node name="Wall" parent="." groups=["regainJump"] instance=ExtResource("2_a804h")]
+position = Vector2(575, 649)
+scale = Vector2(23.76, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1488, 326)
+position_smoothing_enabled = true
+script = SubResource("GDScript_dtapi")
