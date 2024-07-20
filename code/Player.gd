@@ -5,6 +5,7 @@ signal selected_item_change(itemName : String)
 @onready var itemLabel = $"./"
 
 var speed : int = 3000
+var maxVelocity = 750
 var jumpPower : int = 500
 var jumps : int = 2
 
@@ -46,7 +47,7 @@ func _process(delta):
 		selected_item_change.emit(items[selectedItem])
 
 func _integrate_forces(state):
-	if linear_velocity.x < 500:
+	if linear_velocity.x < maxVelocity:
 		if Input.is_action_pressed("moveRight"):
 			print("right")
 			if linear_velocity.x != 0:
@@ -54,7 +55,7 @@ func _integrate_forces(state):
 			else:
 				apply_impulse(Vector2(speed * dt, 0))
 				
-	if linear_velocity.x > -500:
+	if linear_velocity.x > -maxVelocity:
 		if Input.is_action_pressed("moveLeft"):
 			print("left")
 			if linear_velocity.x != 0:

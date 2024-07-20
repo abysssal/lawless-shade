@@ -65,6 +65,6 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 	- [x] Create a functional player, with movement on a floor
 	- [x] Start making an inventory system 
 - 7/20: 
-	- [ ] Fix UI
+	- [x] Fix UI
 	- [ ] Start making potions
 	- [ ] Enemies?

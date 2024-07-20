@@ -1,4 +1,7 @@
+# Custom ignores
 /.obsidian
+/build
+
 # Godot 4+ specific ignores
 .godot/
 

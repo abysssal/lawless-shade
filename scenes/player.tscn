@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bxup0d0k8mqgu" path="res://art/prototypeArt/prototypingArt14.png" id="2_g0p4j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t46xc"]
-absorbent = true
+friction = 0.1
+bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bgf27"]
 radius = 41.5933
@@ -13,6 +14,7 @@ radius = 41.5933
 radius = 46.0109
 
 [node name="Player" type="RigidBody2D"]
+scale = Vector2(1.8, 1.8)
 physics_material_override = SubResource("PhysicsMaterial_t46xc")
 can_sleep = false
 lock_rotation = true
