@@ -14,7 +14,6 @@ radius = 41.5933
 radius = 46.0109
 
 [node name="Player" type="RigidBody2D"]
-scale = Vector2(1.8, 1.8)
 physics_material_override = SubResource("PhysicsMaterial_t46xc")
 can_sleep = false
 lock_rotation = true
