@@ -17,7 +17,7 @@ shape = SubResource("RectangleShape2D_ygf8a")
 scale = Vector2(0.121094, 0.121094)
 texture = ExtResource("1_jnrja")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2DWall" type="Area2D" parent="." groups=["regainJump"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DWall"]
 shape = SubResource("RectangleShape2D_x5l01")

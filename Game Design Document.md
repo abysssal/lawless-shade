@@ -60,7 +60,11 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 ## Controls
 
 # Development Timeline
-***7/18/2024 - 7/31/2024***
-- 7/18 Tasks:
-	- [ ] Create a functional player, with movement on a floor
-	- [ ] Start making an item system 
+***7/19/2024 - 7/31/2024***
+- 7/19:
+	- [x] Create a functional player, with movement on a floor
+	- [x] Start making an inventory system 
+- 7/20: 
+	- [ ] Fix UI
+	- [ ] Start making potions
+	- [ ] Enemies?

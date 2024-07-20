@@ -1,6 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1721362350
-Game Design Document.md::TextFile::-1::1721361553::0::1::::<><>::
+::res://::1721445182
+Game Design Document.md::TextFile::-1::1721420278::0::1::::<><>::
 ::res://art/::1721361597
 icon.svg::CompressedTexture2D::3800361349245960234::1721360670::1721360974::1::::<><>::
 ::res://art/prototypeArt/::1721361597
@@ -29,10 +29,10 @@ prototypingArt21.png::CompressedTexture2D::8965970684477494954::1721361597::1721
 prototypingArt22.png::CompressedTexture2D::2551104531977683546::1721361597::1721361597::1::::<><>::
 prototypingArt23.png::CompressedTexture2D::8567948762129294162::1721361597::1721361597::1::::<><>::
 ::res://audio/::1721361276
-::res://code/::1721362350
-Player.gd::GDScript::-1::1721362007::0::1::::<>RigidBody2D<>::
-::res://scenes/::1721362320
-game.gd::GDScript::-1::1721362320::0::1::::<>Node2D<>::
-game.tscn::PackedScene::2848877407390793536::1721362140::0::1::::<><>::uid://0253q7vlshtb::::res://scenes/player.tscn<>uid://cbacn268rv46v::::res://scenes/wall.tscn<>res://code/Camera.gd
-player.tscn::PackedScene::1812331693099657987::1721362140::0::1::::<><>::res://code/Player.gd<>uid://bxup0d0k8mqgu::::res://art/prototypeArt/prototypingArt14.png
-wall.tscn::PackedScene::4843176327872868543::1721362140::0::1::::<><>::uid://5bjqps3f6ay8::::res://art/prototypeArt/prototypingArt00.png
+::res://code/::1721422321
+Game.gd::GDScript::-1::1721422321::0::1::::<>Node2D<>::
+Player.gd::GDScript::-1::1721421689::0::1::::<>RigidBody2D<>::
+::res://scenes/::1721422322
+game.tscn::PackedScene::2848877407390793536::1721422322::0::1::::<><>::uid://0253q7vlshtb::::res://scenes/player.tscn<>res://code/Game.gd<>uid://cbacn268rv46v::::res://scenes/wall.tscn
+player.tscn::PackedScene::1812331693099657987::1721422322::0::1::::<><>::res://code/Player.gd<>uid://bxup0d0k8mqgu::::res://art/prototypeArt/prototypingArt14.png
+wall.tscn::PackedScene::4843176327872868543::1721422322::0::1::::<><>::uid://5bjqps3f6ay8::::res://art/prototypeArt/prototypingArt00.png
