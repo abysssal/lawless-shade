@@ -91,5 +91,6 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 		- [ ] Ensmallen Potion
 		- [ ] Enbiggen Potion
 	- UI
-		- [ ] Score at Top Center
-		- [ ] Throw Strength becomes a bar rather than a number
+		- [x] Score at Top Center
+		- [x] Throw Strength becomes a bar rather than a number
+		- [ ] All items now show in the bottom, along with a quantity displayz

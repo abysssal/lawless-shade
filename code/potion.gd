@@ -12,7 +12,6 @@ var timeFlying = 0
 
 func _ready():
 	setPotionType()
-	print(modulate)
 	flyingVector = Vector2((get_global_mouse_position().x - position.x) / 10 * strength, (get_global_mouse_position().y - position.y) / 10 * strength)
 	rotation = atan2(flyingVector.y, flyingVector.x) + 90 
 	

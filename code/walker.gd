@@ -11,6 +11,7 @@ var jumpTimer = randi_range(1, 10)
 var targetPos = Vector2(1, 0)
 var randScale = randf_range(0.5, 1.5)
 
+var maxHp : int
 var hp : int
 
 var affectedByPotion : bool
@@ -29,13 +30,15 @@ func _ready():
 			child.transform.origin *= global_scale
 			
 	hp = roundi(randScale * 100)
-			
+	maxHp = hp
+	
 	print(hp)
 
 func _process(delta):
 	jumpTime += delta
 	
 	if hp <= 0:
+		root.score += maxHp * 10
 		queue_free()
 	
 	if roundi(root.playerPosition.x) > roundi(position.x):

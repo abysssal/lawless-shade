@@ -3,7 +3,8 @@ extends Node2D
 @onready var player = $Player
 @onready var camera = $Camera2D
 @onready var itemLabel = $UI/GUI/Item
-@onready var strengthLabel = $UI/GUI/Strength
+@onready var strengthBar = $UI/GUI/StrengthBar
+@onready var scoreLabel = $UI/GUI/Score
 @onready var gui = $UI
 @onready var potionCreationPos = $Player/Node2D/looker
 
@@ -15,6 +16,7 @@ extends Node2D
 @onready var point2 = $Map/SpawnPoint2
 
 var playerPosition
+var score = 0
 var enemyCount = 0
 	
 func _process(delta):
@@ -22,7 +24,13 @@ func _process(delta):
 	
 	camera.position = player.position
 	playerPosition = player.global_position
-	strengthLabel.text = "Throw Strength: " + str(player.throwStrength)
+	scoreLabel.text = str(score)
+	
+	if player.throwStrength == 0:
+		strengthBar.visible = false
+	else:
+		strengthBar.visible = true
+		strengthBar.value = player.throwStrength * 100
 	
 	if enemyCount < 5:
 		var localEnemy = walker.instantiate()
@@ -45,7 +53,6 @@ func _on_player_potion_toss(potionName, strength):
 	match potionName:
 		"Damage Potion":
 			var localPotion = potion.instantiate()
-			strengthLabel.text = "Throw Strength: " + str(strength)
 			localPotion.global_position = potionCreationPos.global_position
 			localPotion.strength = strength * 2
 			localPotion.type = potionName
