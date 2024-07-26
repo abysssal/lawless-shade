@@ -1,44 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://bguauhpbv5is3"]
+[gd_scene load_steps=6 format=3 uid="uid://jt7jc47ux1lm"]
 
-[ext_resource type="PackedScene" uid="uid://0253q7vlshtb" path="res://scenes/player.tscn" id="1_2c1l2"]
-[ext_resource type="Script" path="res://code/Game.gd" id="1_kofgy"]
-[ext_resource type="PackedScene" uid="uid://cbacn268rv46v" path="res://scenes/wall.tscn" id="4_cw2cn"]
-[ext_resource type="PackedScene" uid="uid://c8esnf8g5b77p" path="res://scenes/ui.tscn" id="4_gb574"]
+[ext_resource type="Script" path="res://code/game.gd" id="1_o0une"]
+[ext_resource type="PackedScene" uid="uid://cbacn268rv46v" path="res://scenes/wall.tscn" id="1_xv3u6"]
+[ext_resource type="PackedScene" uid="uid://0253q7vlshtb" path="res://scenes/player.tscn" id="3_eiwoc"]
+[ext_resource type="PackedScene" uid="uid://c8esnf8g5b77p" path="res://scenes/ui.tscn" id="4_8si7y"]
+[ext_resource type="PackedScene" uid="uid://bc60rtrksswnp" path="res://scenes/light.tscn" id="5_3lgbq"]
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_kofgy")
-
-[node name="Player" parent="." instance=ExtResource("1_2c1l2")]
-position = Vector2(582, 295)
+script = ExtResource("1_o0une")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(581, 304)
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 
-[node name="UI" parent="." instance=ExtResource("4_gb574")]
+[node name="Map" type="Node2D" parent="."]
 
-[node name="map" type="Node2D" parent="."]
+[node name="Wall" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(0, 375)
+scale = Vector2(40, 5)
 
-[node name="Wall" parent="map" instance=ExtResource("4_cw2cn")]
-position = Vector2(592, 965)
-scale = Vector2(25, 10)
+[node name="Wall2" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(0, -431)
+scale = Vector2(40, 5)
 
-[node name="Wall2" parent="map" instance=ExtResource("4_cw2cn")]
-position = Vector2(592, -310)
-scale = Vector2(25, 10)
+[node name="Wall3" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-2479, -431)
+scale = Vector2(40, 5)
 
-[node name="Wall3" parent="map" instance=ExtResource("4_cw2cn")]
-position = Vector2(-960, 966)
-scale = Vector2(25, 10)
+[node name="Wall4" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-2479, -431)
+scale = Vector2(40, 5)
 
-[node name="Wall4" parent="map" instance=ExtResource("4_cw2cn")]
-position = Vector2(-2044, 502)
-rotation = 1.5708
-scale = Vector2(25, 10)
+[node name="Wall5" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-2479, 373)
+scale = Vector2(40, 5)
 
-[node name="Wall5" parent="map" instance=ExtResource("4_cw2cn")]
-position = Vector2(-649, -310)
-scale = Vector2(15, 10)
+[node name="Wall6" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-3872, -711)
+rotation = -1.5708
+scale = Vector2(40, 5)
 
+[node name="Light" parent="Map" instance=ExtResource("5_3lgbq")]
+z_index = -1
+position = Vector2(1558, 69)
+rotation = 0.174533
+scale = Vector2(57.3953, 106.017)
+
+[node name="SpawnPoint1" type="Node2D" parent="Map"]
+position = Vector2(946, 217)
+
+[node name="SpawnPoint2" type="Node2D" parent="Map"]
+position = Vector2(722, -274)
+
+[node name="Player" parent="." instance=ExtResource("3_eiwoc")]
+position = Vector2(-1, 1)
+
+[node name="UI" parent="." instance=ExtResource("4_8si7y")]
+
+[connection signal="die" from="Player" to="." method="_on_player_die"]
+[connection signal="potion_toss" from="Player" to="." method="_on_player_potion_toss"]
 [connection signal="selected_item_change" from="Player" to="." method="when_item_changes"]

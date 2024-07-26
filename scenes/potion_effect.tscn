@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://02g1jbo88sqp"]
+
+[ext_resource type="Script" path="res://code/potionEffect.gd" id="1_1x8rr"]
+[ext_resource type="Texture2D" uid="uid://crxs8g2l1ke2j" path="res://art/effectSwirl.png" id="2_jsd4w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xkqf"]
+size = Vector2(300, 336)
+
+[node name="Potion Effect" type="Area2D" groups=["potionEffect"]]
+script = ExtResource("1_1x8rr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -158)
+shape = SubResource("RectangleShape2D_2xkqf")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 20
+explosiveness = 0.15
+texture = ExtResource("2_jsd4w")
+emission_shape = 3
+emission_rect_extents = Vector2(150, 1)
+direction = Vector2(0, 0)
+gravity = Vector2(0, -980)
+initial_velocity_max = 20.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+linear_accel_min = -60.0
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+damping_min = 35.0
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.0
+scale_amount_max = 0.1
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

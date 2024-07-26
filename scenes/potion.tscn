@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://drukkbangiqjw"]
+
+[ext_resource type="Script" path="res://code/potion.gd" id="1_pr7vd"]
+[ext_resource type="Texture2D" uid="uid://xcjnu6opcb7j" path="res://art/potion.png" id="2_xl8kp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xl5bt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2utbm"]
+
+[node name="Potion" type="RigidBody2D"]
+position = Vector2(0, 47)
+can_sleep = false
+script = ExtResource("1_pr7vd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xl5bt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 8.34465e-06)
+scale = Vector2(0.078125, 0.078125)
+texture = ExtResource("2_xl8kp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2utbm")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered_area"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

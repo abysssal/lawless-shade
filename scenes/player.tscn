@@ -1,17 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://0253q7vlshtb"]
+[gd_scene load_steps=8 format=3 uid="uid://0253q7vlshtb"]
 
-[ext_resource type="Script" path="res://code/Player.gd" id="1_f5cmv"]
+[ext_resource type="Script" path="res://code/player.gd" id="1_f5cmv"]
 [ext_resource type="Texture2D" uid="uid://bxup0d0k8mqgu" path="res://art/prototypeArt/prototypingArt14.png" id="2_g0p4j"]
+[ext_resource type="Script" path="res://code/look.gd" id="3_d4qjy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t46xc"]
-friction = 0.1
-bounce = 0.1
+friction = 0.96
+absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bgf27"]
-radius = 41.5933
+radius = 27.074
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmfvn"]
-radius = 46.0109
+radius = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61cwj"]
+size = Vector2(64, 20)
 
 [node name="Player" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_t46xc")
@@ -23,8 +27,8 @@ script = ExtResource("1_f5cmv")
 shape = SubResource("CircleShape2D_bgf27")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 3.8147e-06)
-scale = Vector2(0.160156, 0.160156)
+position = Vector2(9.53674e-07, 1.90735e-06)
+scale = Vector2(0.105469, 0.105469)
 texture = ExtResource("2_g0p4j")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -32,5 +36,19 @@ texture = ExtResource("2_g0p4j")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_gmfvn")
 
+[node name="WallDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector"]
+shape = SubResource("RectangleShape2D_61cwj")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("3_d4qjy")
+
+[node name="looker" type="Node2D" parent="Node2D"]
+position = Vector2(100, 0)
+scale = Vector2(0.160156, 0.160156)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="WallDetector" to="." method="_on_wall_detector"]
+[connection signal="body_exited" from="WallDetector" to="." method="_on_wall_detector_exited"]

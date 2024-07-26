@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://cghdu22o201uu"]
+
+[ext_resource type="FontFile" uid="uid://br2nfbspdbh53" path="res://art/fonts/FFFFORWA.TTF" id="1_mvstq"]
+[ext_resource type="Script" path="res://code/gameOverUi.gd" id="1_sqd57"]
+[ext_resource type="Texture2D" uid="uid://bl0x0uyc1ouv3" path="res://art/restart.png" id="2_yaekb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yb540"]
+bg_color = Color(0.260653, 0.180545, 0.339923, 1)
+border_width_left = 50
+border_width_top = 50
+border_width_right = 50
+border_width_bottom = 50
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_a26yl"]
+font = ExtResource("1_mvstq")
+font_size = 48
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sqd57")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yb540")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_top = 92.0
+offset_right = 1151.0
+offset_bottom = 172.0
+text = "You have succumbed"
+label_settings = SubResource("LabelSettings_a26yl")
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 431.0
+offset_right = 514.0
+offset_bottom = 484.0
+theme_override_fonts/font = ExtResource("1_mvstq")
+theme_override_font_sizes/font_size = 20
+text = "Retry"
+icon = ExtResource("2_yaekb")
+expand_icon = true
+
+[connection signal="button_up" from="Panel/Retry" to="." method="_on_button_pressed"]

@@ -56,8 +56,14 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 # Game Experience
 
 ## UI
+- Title Screen
+- 
 
 ## Controls
+- AD or Left & Right Keys - Move
+- W, Up, or Space - Jump
+- LMB - Throw Potion
+- 1-3 or Mouse Wheel - Select Potions
 
 # Development Timeline
 ***7/19/2024 - 7/31/2024***
@@ -66,5 +72,24 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 	- [x] Start making an inventory system 
 - 7/20: 
 	- [x] Fix UI
-	- [ ] Start making potions
-	- [ ] Enemies?
+	- [x] Potion System
+	- [x] Start Basic Enemies
+- 7/23
+	- [x] Add the entrance (deadly)
+	- [x] Add death logic
+	- [x] Finish Walker Enemy
+- 7/25
+	- [x] Make Potions work on enemies
+	- [x] Enemy spawning
+- 7/26
+	- Potions
+		- [ ] Slowness Potion
+		- [ ] Speed Potion
+		- [ ] Jump Potion
+		- [ ] Gravity Potion
+		- [ ] Levitation Potion
+		- [ ] Ensmallen Potion
+		- [ ] Enbiggen Potion
+	- UI
+		- [ ] Score at Top Center
+		- [ ] Throw Strength becomes a bar rather than a number
