@@ -2,18 +2,17 @@ extends Node2D
 
 @onready var player = $Player
 @onready var camera = $Camera2D
-@onready var itemLabel = $UI/GUI/Item
 @onready var strengthBar = $UI/GUI/StrengthBar
 @onready var scoreLabel = $UI/GUI/Score
 @onready var gui = $UI
 @onready var potionCreationPos = $Player/Node2D/looker
+@onready var point1 = $Map/SpawnPoint1
+@onready var point2 = $Map/SpawnPoint2
+@onready var items = [$UI/GUI/Items/Item1, $UI/GUI/Items/Item2, $UI/GUI/Items/Item3]
 
 @onready var walker = preload("res://scenes/walker.tscn")
 @onready var potion = preload("res://scenes/potion.tscn")
 @onready var gameOver = preload("res://scenes/gameOver.tscn")
-
-@onready var point1 = $Map/SpawnPoint1
-@onready var point2 = $Map/SpawnPoint2
 
 var playerPosition
 var score = 0
@@ -44,10 +43,18 @@ func _process(delta):
 	if not localEnemyCount == enemyCount:
 		enemyCount = localEnemyCount
 			
-	print(enemyCount)
+	for index in range(len(player.items)):
+		print(player.items[index])
+		items[index].modulate = getPotionSpriteColor(player.items[index])
+						
+		if player.items[index] == "none":
+			items[index].texture = load("res://art/nothing.png")
+		else:
+			items[index].texture = load("res://art/potion.png")
 		
+	
 func when_item_changes(itemName): 
-	$UI/GUI/Item.text = "Selected Item: " + itemName
+	print(itemName) 
 	
 func _on_player_potion_toss(potionName, strength):
 	match potionName:
@@ -60,3 +67,14 @@ func _on_player_potion_toss(potionName, strength):
 
 func _on_player_die():
 	get_tree().change_scene_to_packed(gameOver)
+
+func getPotionSpriteColor(potion : String):
+	var color : Color
+	
+	match potion:
+		"none":
+			color = Color(1, 1, 1)
+		"Damage Potion":
+			color = Color8(255, 170, 255)
+			
+	return color

@@ -15,7 +15,7 @@ var wallPos : Vector2
 
 var dt : float = 0
 
-var items = ["Damage Potion", "big balls", "big dicks"] 
+var items = ["Damage Potion", "none", "none"] 
 var selectedItem = 0
 
 var throwStrength : float

@@ -82,6 +82,11 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 	- [x] Make Potions work on enemies
 	- [x] Enemy spawning
 - 7/26
+	- UI
+		- [x] Score at Top Center
+		- [x] Throw Strength becomes a bar rather than a number
+		- [x] All items now show in the bottom
+- 7/27
 	- Potions
 		- [ ] Slowness Potion
 		- [ ] Speed Potion
@@ -90,7 +95,3 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 		- [ ] Levitation Potion
 		- [ ] Ensmallen Potion
 		- [ ] Enbiggen Potion
-	- UI
-		- [x] Score at Top Center
-		- [x] Throw Strength becomes a bar rather than a number
-		- [ ] All items now show in the bottom, along with a quantity displayz
