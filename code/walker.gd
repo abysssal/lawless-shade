@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var speed = randi_range(2000, 4000)
+var speed : float = randi_range(2000, 4000)
 var maxVelocity = randi_range(200, 500)
 
 var jumpPower = randi_range(500, 1000)
@@ -10,6 +10,7 @@ var jumpTimer = randi_range(1, 10)
 
 var targetPos = Vector2(1, 0)
 var randScale = randf_range(0.5, 1.5)
+var actualScale : float
 
 var maxHp : int
 var hp : int
@@ -19,10 +20,12 @@ var lastEffectEntered : String
 var potionEffectCooldown = 0
 
 @onready var root = get_node("..")
+@onready var hpBar = $Health
 
 func _ready():
 	randScale = randf_range(5, 15) / 10
 	global_scale = Vector2(randScale, randScale)
+	actualScale = global_scale.x
 	
 	for child in get_children():
 		if child is Node2D:
@@ -31,11 +34,22 @@ func _ready():
 			
 	hp = roundi(randScale * 100)
 	maxHp = hp
+	hpBar.max_value = maxHp
 	
 	print(hp)
 
 func _process(delta):
 	jumpTime += delta
+	
+	hpBar.value = hp
+	
+	if actualScale >= 2 or actualScale < 0.1 or maxVelocity < 0 or maxVelocity > 1000:
+		hp = 0
+	
+	if maxHp > hp:
+		hpBar.visible = true
+	else:
+		hpBar.visible = false
 	
 	if hp <= 0:
 		root.score += maxHp * 10
@@ -57,10 +71,45 @@ func _process(delta):
 		match lastEffectEntered:
 			"Damage Potion":
 				hp -= 10
-				print("damage potion, hp: " + str(hp))
+				potionEffectCooldown = 0.1
+			"Slowness Potion":
+				maxVelocity -= 10
+				potionEffectCooldown = 0.1
+			"Speed Potion":
+				maxVelocity += 10
+				potionEffectCooldown = 0.1
+			"Jump Potion":
+				jumpPower += 20
+				potionEffectCooldown = 0.1
+			"Gravity Potion":
+				jumpPower -= 20
+				gravity_scale += 0.1
+				potionEffectCooldown = 0.1
+			"Levitation Potion":
+				apply_impulse(Vector2(0, -800))
+				gravity_scale -= 0.1
+				potionEffectCooldown = 5
+			"Ensmallen Potion":
+				global_scale -= Vector2(0.2, 0.2)
+				actualScale -= 0.2
+				potionEffectCooldown = 0.3
 				
-		potionEffectCooldown = 0.1
-	elif affectedByPotion and potionEffectCooldown > 0:
+				for child in get_children():
+					if child is Node2D:
+						child.scale *= global_scale
+						child.transform.origin *= global_scale
+				
+			"Enbiggen Potion":
+				global_scale += Vector2(0.2, 0.2)
+				actualScale += 0.2
+				potionEffectCooldown = 0.3
+				
+				for child in get_children():
+					if child is Node2D:
+						child.scale *= global_scale
+						child.transform.origin *= global_scale
+						
+	if affectedByPotion and potionEffectCooldown > 0:
 		potionEffectCooldown -= delta
 	else:
 		potionEffectCooldown = 0
@@ -69,10 +118,7 @@ func _integrate_forces(state):
 	if abs(linear_velocity.x) < maxVelocity and not targetPos.x == 0:
 		apply_impulse(Vector2(targetPos.x * speed * get_physics_process_delta_time(), 0))
 		
-	if targetPos.y == 1:
-		jumpTime = jumpTimer
-	
-	if jumpTime >= jumpTimer and jumps > 0:
+	if jumpTime >= jumpTimer and targetPos.y > 0:
 		apply_impulse(Vector2(0, -jumpPower))
 		jumpTime = 0
 		jumpTimer = randi_range(1, 5)

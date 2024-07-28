@@ -29,7 +29,7 @@ project/assembly_name="LawlessShade"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg", "res://addons/rigidbody_auto_scaler/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://lqm53n5gsnyi"]
+
+[ext_resource type="Script" path="res://code/potionpickup.gd" id="1_6rpag"]
+[ext_resource type="Texture2D" uid="uid://xcjnu6opcb7j" path="res://art/potion.png" id="2_tikkc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5r0wl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3rtsc"]
+
+[node name="PotionPickUp" type="RigidBody2D" groups=["potionPickUp"]]
+script = ExtResource("1_6rpag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5r0wl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 8.34465e-06)
+scale = Vector2(0.078125, 0.078125)
+texture = ExtResource("2_tikkc")
+
+[node name="Area2D" type="Area2D" parent="." groups=["potionPickUp"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3rtsc")

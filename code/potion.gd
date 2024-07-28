@@ -43,3 +43,39 @@ func setPotionType():
 			effectSize = Vector2(200, 300)
 			effectLifetime = 0.5
 			effectLength = 0.1
+		"Slowness Potion":
+			$Sprite2D.modulate = Color8(185, 208, 255)
+			effectSize = Vector2(250, 300)
+			effectLifetime = 1.25
+			effectLength = 1
+		"Speed Potion":
+			$Sprite2D.modulate = Color8(135, 227, 170)
+			effectSize = Vector2(150, 300)
+			effectLifetime = 0.75
+			effectLength = 2
+		"Jump Potion":
+			$Sprite2D.modulate = Color8(234, 200, 103)
+			effectSize = Vector2(50, 300)
+			effectLifetime = 1
+			effectLength = 1
+		"Gravity Potion":
+			$Sprite2D.modulate = Color8(242, 147, 0)
+			effectSize = Vector2(75, 300)
+			effectLifetime = 1.2
+			effectLength = 1.25
+		"Levitation Potion":
+			$Sprite2D.modulate = Color8(255, 255, 255)
+			effectSize = Vector2(100, 300)
+			effectLifetime = 2
+			effectLength = 4
+		"Ensmallen Potion":
+			$Sprite2D.modulate = Color8(128, 0, 174)
+			effectSize = Vector2(50, 300)
+			effectLifetime = 1
+			effectLength = 1
+		"Enbiggen Potion":
+			$Sprite2D.modulate = Color8(255, 0, 200)
+			effectSize = Vector2(250, 300)
+			effectLifetime = 3
+			effectLength = 3
+		

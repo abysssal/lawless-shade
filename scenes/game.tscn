@@ -24,21 +24,65 @@ position = Vector2(0, -431)
 scale = Vector2(40, 5)
 
 [node name="Wall3" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-2479, -431)
-scale = Vector2(40, 5)
+position = Vector2(-4493, 375)
+scale = Vector2(25, 5)
+
+[node name="Wall6" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-4493, 126)
+scale = Vector2(15, 3)
+
+[node name="Wall7" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-4493, -61)
+scale = Vector2(5, 3)
+
+[node name="Wall8" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-6043, 375)
+scale = Vector2(25, 5)
+
+[node name="Wall10" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-6043, 126)
+scale = Vector2(15, 3)
+
+[node name="Wall12" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-6043, -61)
+scale = Vector2(5, 3)
+
+[node name="Wall9" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-5580, -1337)
+scale = Vector2(60, 5)
 
 [node name="Wall4" parent="Map" instance=ExtResource("1_xv3u6")]
 position = Vector2(-2479, -431)
 scale = Vector2(40, 5)
 
-[node name="Wall5" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-2479, 373)
-scale = Vector2(40, 5)
+[node name="Wall11" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-3564, -1206)
+rotation = 1.5708
+scale = Vector2(20, 5)
 
-[node name="Wall6" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-3872, -711)
+[node name="Wall13" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-7598, -704)
 rotation = -1.5708
 scale = Vector2(40, 5)
+
+[node name="Wall5" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-2479, 375)
+scale = Vector2(40, 5)
+
+[node name="Door" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-1239, -25.9999)
+rotation = -1.5708
+scale = Vector2(14.04, 5)
+
+[node name="Door2" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-3577, -26)
+rotation = -1.5708
+scale = Vector2(18.76, 5)
+
+[node name="Door3" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-7147, 373)
+rotation = -3.14159
+scale = Vector2(18.76, 5)
 
 [node name="Light" parent="Map" instance=ExtResource("5_3lgbq")]
 z_index = -1
@@ -51,6 +95,12 @@ position = Vector2(946, 217)
 
 [node name="SpawnPoint2" type="Node2D" parent="Map"]
 position = Vector2(722, -274)
+
+[node name="SpawnPoint3" type="Node2D" parent="Map"]
+position = Vector2(-700, 217)
+
+[node name="SpawnPoint4" type="Node2D" parent="Map"]
+position = Vector2(-1000, -274)
 
 [node name="Player" parent="." instance=ExtResource("3_eiwoc")]
 position = Vector2(-1, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvvdl6128hw5i"]
+[gd_scene load_steps=8 format=3 uid="uid://dvvdl6128hw5i"]
 
 [ext_resource type="Texture2D" uid="uid://bbea1y50xab0u" path="res://art/prototypeArt/prototypingArt10.png" id="1_7kg43"]
 [ext_resource type="Script" path="res://code/walker.gd" id="1_n3rh5"]
@@ -11,6 +11,31 @@ size = Vector2(60, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jm717"]
 size = Vector2(41, 7)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujysk"]
+bg_color = Color(0, 0, 0, 0.470588)
+skew = Vector2(0.1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvvaj"]
+bg_color = Color(0.976471, 0.235294, 0.313726, 1)
+skew = Vector2(0.1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [node name="Walker" type="RigidBody2D" groups=["walker"]]
 can_sleep = false
@@ -35,6 +60,16 @@ shape = SubResource("RectangleShape2D_30pl4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottom"]
 position = Vector2(-1.5, 29.5)
 shape = SubResource("RectangleShape2D_jm717")
+
+[node name="Health" type="ProgressBar" parent="."]
+offset_left = -42.0
+offset_top = -46.0
+offset_right = 42.0
+offset_bottom = -38.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ujysk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tvvaj")
+value = 50.0
+show_percentage = false
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered_area"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited_area"]

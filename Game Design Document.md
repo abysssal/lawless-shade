@@ -14,7 +14,7 @@ Lawless Shade is an action-platformer where you throw potions in self defense at
 It will be released on the web for desktop platforms. I might make a mobile version to put on https://poki.com in the future but for the jam, desktop web works fine.
 ## Development Software
 I will be using Godot for this project, since it's simple, easy to use, and very efficient.
-My art software will likely be Piskel, but if I need to edit something large (i.e. a tilesheet), then I'll use GIMP for that. Lastly, sound effects will likely come from JSFXR and music will either be found online or made with LMMS.
+My art software will likely be Piskel, but if I need to edit something large (i.e. a tilesheet), then I'll use GIMP for that. Lastly, sound effects will come from JSFXR and music will either be found online or made with LMMS.
 ## Genre
 I was debating between calling it a metroidvania or an action-platformer, but metroidvanias normally have very spacious levels, and my game doesn't really have the biggest levels, so I can't call it that, so I'm calling it an action-platformer.
 ## Target Audience
@@ -33,15 +33,12 @@ I took the theme more so at face value. Shadows reminded me of SCP-001, S.D. Loc
 	- Enemy Types:
 		- Walkers
 			- Walks toward you, and pulls you into the light
-		- Impulsives
-			- Spits at you in the direction you're running
+		- Fraudulants
+			- Throws random potions towards you
 		- Paras 
 			- Will run up to you, but instead of dragging you, they stun you and die, making you much more vulnerable
-		- 
 - **Windows**
-	- Initially, they're all blocked to make sure no light can get in. Enemies can destroy the barricade and let light in, making it more difficult to navigate for the player
-
-## Secondary Mechanics
+	- Initially, they're all blocked to make sure no light can get in, but over time they open, letting light in, making them dangerous
 
 # Art
 
@@ -57,7 +54,17 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 
 ## UI
 - Title Screen
-- 
+	- Pretty basic, a way to get the player in the game, might have the level in the background
+- In-game UI
+	- Score
+		- Keeps track of score, which is calculated based on the health of the enemy, along with the type. More difficult enemies (such as Paras), will give more points
+	- Throw Strength Meter
+		- Tracks your throwing strength with your current throw
+		- Goes away once you throw the potion
+		- Allows for much easier tracking of throws
+	- Inventory
+		- Tells you the potions you have in your inventory, or none at all
+		- Also shows which potions you have equipped
 
 ## Controls
 - AD or Left & Right Keys - Move
@@ -88,10 +95,24 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 		- [x] All items now show in the bottom
 - 7/27
 	- Potions
-		- [ ] Slowness Potion
-		- [ ] Speed Potion
-		- [ ] Jump Potion
-		- [ ] Gravity Potion
-		- [ ] Levitation Potion
-		- [ ] Ensmallen Potion
-		- [ ] Enbiggen Potion
+		- [x] Slowness Potion
+		- [x] Speed Potion
+		- [x] Jump Potion
+		- [x] Gravity Potion
+		- [x] Levitation Potion
+		- [x] Ensmallen Potion
+		- [x] Enbiggen Potion
+	- Add potion quantities to deter players from spamming potions 
+		- Max quantity of one potion is 100
+	- [x] Spawning Potions
+	- [x] Build Test Level
+- 7/28
+	- [ ] Fraudulants Enemies
+		- Will throw random potions at the player
+	- [ ] Para Enemies
+		- Extremely fast and agile, but weak
+		- Stuns the player for 0.5 seconds
+	- [ ] Windows
+		- Starts closed
+		- As enemies touch windows, they open more and more, letting more light in
+		- Very dangerous
