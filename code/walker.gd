@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var speed : float = randi_range(2000, 4000)
-var maxVelocity = randi_range(200, 500)
+var maxVelocity = randi_range(300, 550)
 
 var jumpPower = randi_range(500, 1000)
 var jumps = 0
@@ -11,6 +11,11 @@ var jumpTimer = randi_range(1, 10)
 var targetPos = Vector2(1, 0)
 var randScale = randf_range(0.5, 1.5)
 var actualScale : float
+
+var spriteAnimations = [preload("res://art/walker0.png"), preload("res://art/walker1.png"), preload("res://art/walker2.png")] 
+var animDelay = 0
+var animInter = 0
+@onready var sprite = $Sprite2D
 
 var maxHp : int
 var hp : int
@@ -43,6 +48,20 @@ func _process(delta):
 	
 	hpBar.value = hp
 	
+	if animDelay > 0:
+		animDelay -= delta
+	elif animDelay < 0:
+		animDelay = 0
+		
+	if animDelay == 0:
+		if animInter == 2:
+			animInter = 0
+		else:
+			animInter += 1
+
+		sprite.texture = spriteAnimations[animInter]
+		animDelay = 0.125
+	
 	if actualScale >= 2 or actualScale < 0.1 or maxVelocity < 0 or maxVelocity > 1000:
 		hp = 0
 	
@@ -53,12 +72,15 @@ func _process(delta):
 	
 	if hp <= 0:
 		root.score += maxHp * 10
+		root.playEnemyDie(global_position)
 		queue_free()
 	
 	if roundi(root.playerPosition.x) > roundi(position.x):
 		targetPos.x = 1
+		sprite.flip_h = true
 	elif roundi(root.playerPosition.x) < roundi(position.x):
 		targetPos.x = -1
+		sprite.flip_h = false
 	else:
 		targetPos.x = 0
 		
@@ -109,10 +131,12 @@ func _process(delta):
 						child.scale *= global_scale
 						child.transform.origin *= global_scale
 						
+						
 	if affectedByPotion and potionEffectCooldown > 0:
 		potionEffectCooldown -= delta
 	else:
 		potionEffectCooldown = 0
+		
 
 func _integrate_forces(state):
 	if abs(linear_velocity.x) < maxVelocity and not targetPos.x == 0:
@@ -120,6 +144,8 @@ func _integrate_forces(state):
 		
 	if jumpTime >= jumpTimer and targetPos.y > 0:
 		apply_impulse(Vector2(0, -jumpPower))
+		$Jump.play()
+		$JumpParticles.emitting = true
 		jumpTime = 0
 		jumpTimer = randi_range(1, 5)
 

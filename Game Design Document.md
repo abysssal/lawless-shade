@@ -32,9 +32,9 @@ I took the theme more so at face value. Shadows reminded me of SCP-001, S.D. Loc
 	- Enemies do not hurt you. Instead, they drag you into the light, which is dangerous.
 	- Enemy Types:
 		- Walkers
-			- Walks toward you, and pulls you into the light
-		- Fraudulants
-			- Throws random potions towards you
+			- Walks toward you, and throws you until you go into the light.
+		- Juggernauts
+			- Slow and strong, will throw you very far. More susceptible to the Ensmallen Potion
 		- Paras 
 			- Will run up to you, but instead of dragging you, they stun you and die, making you much more vulnerable
 - **Windows**
@@ -43,7 +43,7 @@ I took the theme more so at face value. Shadows reminded me of SCP-001, S.D. Loc
 # Art
 
 ## Design
-A dark approach will be taken for the art, since you're hiding in a dark facility (duh), and it's made to provide a sense of uncertainty when entering into the map. The art style will be made with pixel art, using Piskel to make the sprites, and GIMP to design the levels.
+A dark approach will be taken for the art, since you're hiding in a dark facility (duh), and it's made to provide a sense of uncertainty when entering into the map. The art style will be made with pixel art, in an 8x8 resolution, using Piskel to make the sprites, and GIMP to design the levels.
 # Audio
 
 ## Music
@@ -107,12 +107,48 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 	- [x] Spawning Potions
 	- [x] Build Test Level
 - 7/28
-	- [ ] Fraudulants Enemies
-		- Will throw random potions at the player
-	- [ ] Para Enemies
+	- [x] Juggernaut Enemies
+		- Large
+		- Slow
+		- Strong
+		- Throws much further than Walker
+	- [x] Para Enemies
 		- Extremely fast and agile, but weak
 		- Stuns the player for 0.5 seconds
-	- [ ] Windows
+	- [x] Windows
 		- Starts closed
 		- As enemies touch windows, they open more and more, letting more light in
-		- Very dangerous
+		- Very dangerous on light is in
+- 7/29 - **Art Day**
+	- Assets to make:
+		- [x] Player
+			- Old man with a white beard
+		- Enemies
+			- [x] Walker
+				- A gloopy human
+			- [x] Juggernaut
+				- A mass of gloopy humans
+			- [x] Paras
+				- Very red human
+		- Map
+			- [x] Background
+				- I imagine this is closer to medieval times, so a castle
+			- [x] Walls
+				- Lighter than background, but still dark
+			- [x] Doors
+				- Large, drawbridge inside castle
+			- [x] Windows
+				- Ornamental, fancy, curved top
+				- Stained glass?
+	- Sound Effects
+		- [x] Death
+		- [x] Pick Up Potion
+		- [x] Enemy Death
+		- [x] Potion Throw
+		- [x] Potion Break
+- 7/30 - **Final Day**
+	- [x] Finish Level (8 doors total)
+	- [x] Title Screen
+	- [x] Redo Death Screen
+	- [x] **PLAYTEST**
+	- [ ] ***SUBMIT!***

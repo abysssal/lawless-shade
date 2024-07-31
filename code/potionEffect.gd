@@ -12,6 +12,7 @@ var life : float = 0
 func _ready():
 	$CPUParticles2D.color = potionColor
 	$CPUParticles2D.emission_rect_extents = Vector2(size.x / 2, 1)
+	$BreakPotion.play()
 
 func _process(dt):
 	life += dt

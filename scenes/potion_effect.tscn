@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://02g1jbo88sqp"]
+[gd_scene load_steps=5 format=3 uid="uid://02g1jbo88sqp"]
 
 [ext_resource type="Script" path="res://code/potionEffect.gd" id="1_1x8rr"]
 [ext_resource type="Texture2D" uid="uid://crxs8g2l1ke2j" path="res://art/effectSwirl.png" id="2_jsd4w"]
+[ext_resource type="AudioStream" uid="uid://bpaao0fggmhn3" path="res://audio/potionBreak.mp3" id="3_3dv4a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xkqf"]
 size = Vector2(300, 336)
@@ -39,5 +40,8 @@ scale_amount_min = 0.0
 scale_amount_max = 0.1
 hue_variation_min = -1.0
 hue_variation_max = 1.0
+
+[node name="BreakPotion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3dv4a")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

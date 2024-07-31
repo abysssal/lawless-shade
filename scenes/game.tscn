@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://jt7jc47ux1lm"]
+[gd_scene load_steps=12 format=3 uid="uid://jt7jc47ux1lm"]
 
 [ext_resource type="Script" path="res://code/game.gd" id="1_o0une"]
 [ext_resource type="PackedScene" uid="uid://cbacn268rv46v" path="res://scenes/wall.tscn" id="1_xv3u6"]
 [ext_resource type="PackedScene" uid="uid://0253q7vlshtb" path="res://scenes/player.tscn" id="3_eiwoc"]
 [ext_resource type="PackedScene" uid="uid://c8esnf8g5b77p" path="res://scenes/ui.tscn" id="4_8si7y"]
 [ext_resource type="PackedScene" uid="uid://bc60rtrksswnp" path="res://scenes/light.tscn" id="5_3lgbq"]
+[ext_resource type="PackedScene" uid="uid://hoqxt5jokcfg" path="res://scenes/background.tscn" id="5_6i06m"]
+[ext_resource type="PackedScene" uid="uid://dn2jl02cpgl0i" path="res://scenes/window.tscn" id="6_bxxnu"]
+[ext_resource type="PackedScene" uid="uid://daaxxewoxsljm" path="res://scenes/door.tscn" id="7_hw113"]
+[ext_resource type="FontFile" uid="uid://br2nfbspdbh53" path="res://art/fonts/FFFFORWA.TTF" id="9_b1r0b"]
+[ext_resource type="Texture2D" uid="uid://dgfgbooud2ybg" path="res://art/amogus.png" id="10_wawmq"]
+[ext_resource type="AudioStream" uid="uid://dmm67eko4fsk8" path="res://audio/enemyDeath.wav" id="11_ubc6t"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_o0une")
@@ -16,79 +22,560 @@ position_smoothing_enabled = true
 [node name="Map" type="Node2D" parent="."]
 
 [node name="Wall" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(0, 375)
-scale = Vector2(40, 5)
+position = Vector2(0, 598)
+scale = Vector2(10, 10)
 
 [node name="Wall2" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(0, -431)
-scale = Vector2(40, 5)
+position = Vector2(620, 598)
+scale = Vector2(10, 10)
 
 [node name="Wall3" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-4493, 375)
-scale = Vector2(25, 5)
-
-[node name="Wall6" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-4493, 126)
-scale = Vector2(15, 3)
-
-[node name="Wall7" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-4493, -61)
-scale = Vector2(5, 3)
-
-[node name="Wall8" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-6043, 375)
-scale = Vector2(25, 5)
-
-[node name="Wall10" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-6043, 126)
-scale = Vector2(15, 3)
-
-[node name="Wall12" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-6043, -61)
-scale = Vector2(5, 3)
-
-[node name="Wall9" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-5580, -1337)
-scale = Vector2(60, 5)
+position = Vector2(-1240, 598)
+scale = Vector2(10, 10)
 
 [node name="Wall4" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-2479, -431)
-scale = Vector2(40, 5)
-
-[node name="Wall11" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-3564, -1206)
-rotation = 1.5708
-scale = Vector2(20, 5)
-
-[node name="Wall13" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-7598, -704)
-rotation = -1.5708
-scale = Vector2(40, 5)
+position = Vector2(-620, 598)
+scale = Vector2(10, 10)
 
 [node name="Wall5" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-2479, 375)
-scale = Vector2(40, 5)
+position = Vector2(1240, 598)
+scale = Vector2(10, 10)
 
-[node name="Door" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-1239, -25.9999)
-rotation = -1.5708
-scale = Vector2(14.04, 5)
+[node name="Wall6" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(0, -632)
+scale = Vector2(10, 10)
 
-[node name="Door2" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-3577, -26)
-rotation = -1.5708
-scale = Vector2(18.76, 5)
+[node name="Wall7" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(620, -632)
+scale = Vector2(10, 10)
 
-[node name="Door3" parent="Map" instance=ExtResource("1_xv3u6")]
-position = Vector2(-7147, 373)
-rotation = -3.14159
-scale = Vector2(18.76, 5)
+[node name="Wall8" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-1240, -632)
+scale = Vector2(10, 10)
+
+[node name="Wall9" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-620, -632)
+scale = Vector2(10, 10)
+
+[node name="Wall10" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(1240, -632)
+scale = Vector2(10, 10)
 
 [node name="Light" parent="Map" instance=ExtResource("5_3lgbq")]
 z_index = -1
 position = Vector2(1558, 69)
 rotation = 0.174533
 scale = Vector2(57.3953, 106.017)
+
+[node name="Door" parent="Map" instance=ExtResource("7_hw113")]
+position = Vector2(-1445, -16)
+scale = Vector2(3, 3.3)
+
+[node name="Wall11" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-3100, 598)
+scale = Vector2(10, 10)
+
+[node name="Wall12" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-2480, 598)
+scale = Vector2(10, 10)
+
+[node name="Wall13" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-4340, 598)
+scale = Vector2(10, 10)
+
+[node name="Wall14" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-3720, 598)
+scale = Vector2(10, 10)
+
+[node name="Wall15" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-1860, 598)
+scale = Vector2(10, 10)
+
+[node name="Wall16" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-3100, -632)
+scale = Vector2(10, 10)
+
+[node name="Wall17" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-2480, -632)
+scale = Vector2(10, 10)
+
+[node name="Wall18" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-4340, -632)
+scale = Vector2(10, 10)
+
+[node name="Wall19" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-3720, -632)
+scale = Vector2(10, 10)
+
+[node name="Wall20" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-1860, -632)
+scale = Vector2(10, 10)
+
+[node name="Wall21" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-6200, 676)
+scale = Vector2(10, 10)
+
+[node name="Wall22" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-5580, 676)
+scale = Vector2(10, 10)
+
+[node name="Wall23" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-7440, 676)
+scale = Vector2(10, 10)
+
+[node name="Wall24" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-6820, 676)
+scale = Vector2(10, 10)
+
+[node name="Wall25" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-4960, 676)
+scale = Vector2(10, 10)
+
+[node name="Wall26" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-6200, -710)
+scale = Vector2(10, 10)
+
+[node name="Wall27" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-5580, -710)
+scale = Vector2(10, 10)
+
+[node name="Wall28" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-7440, -710)
+scale = Vector2(10, 10)
+
+[node name="Wall31" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-8060, 676)
+scale = Vector2(10, 10)
+
+[node name="Wall32" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-8060, -710)
+scale = Vector2(10, 10)
+
+[node name="Wall44" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-11124, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall33" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-8598, 623)
+rotation = 0.230061
+scale = Vector2(10, 10)
+
+[node name="Wall34" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-8599, -766)
+rotation = 0.230061
+scale = Vector2(10, 10)
+
+[node name="Wall35" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-9202, 482)
+rotation = 0.230061
+scale = Vector2(10, 10)
+
+[node name="Wall36" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-9203, -907)
+rotation = 0.230061
+scale = Vector2(10, 10)
+
+[node name="Wall37" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-9805, 341)
+rotation = 0.230061
+scale = Vector2(10, 10)
+
+[node name="Wall38" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-9806, -1048)
+rotation = 0.230061
+scale = Vector2(10, 10)
+
+[node name="Wall39" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-10243, 138)
+rotation = 0.628143
+scale = Vector2(10, 10)
+
+[node name="Wall75" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-10243, 138)
+rotation = 0.628143
+scale = Vector2(10, 10)
+
+[node name="Wall40" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-10244, -1251)
+rotation = 0.628143
+scale = Vector2(10, 10)
+
+[node name="Wall41" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-10744, -226)
+rotation = 0.628143
+scale = Vector2(10, 10)
+
+[node name="Wall43" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-11245, -590.001)
+rotation = 0.628143
+scale = Vector2(10, 10)
+
+[node name="Wall76" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-20678, -585)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall77" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-21180, -221)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall78" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-21682, 144.001)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall79" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-22184, 508)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall80" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-22683, 870)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall81" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-23185, 1234)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall82" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-23687, 1599)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall83" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-24189, 1963)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall84" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-24690, 2325)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall85" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-25192, 2689)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall86" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-25694, 3054)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall87" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-26196, 3418)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall100" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-26578, 3660)
+scale = Vector2(10, 10)
+
+[node name="Wall101" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-27196, 3660)
+scale = Vector2(10, 10)
+
+[node name="Wall102" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-26500, 1682)
+scale = Vector2(10, 10)
+
+[node name="Wall104" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-25881, 1682)
+scale = Vector2(10, 10)
+
+[node name="Wall103" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-27118, 1682)
+scale = Vector2(10, 10)
+
+[node name="Wall105" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-27817, 3660)
+scale = Vector2(10, 10)
+
+[node name="Wall106" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-28435, 3660)
+scale = Vector2(10, 10)
+
+[node name="Wall107" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-27739, 1682)
+scale = Vector2(10, 10)
+
+[node name="Wall108" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-28357, 1682)
+scale = Vector2(10, 10)
+
+[node name="Wall109" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-29056, 3661)
+scale = Vector2(10, 10)
+
+[node name="Wall110" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-29674, 3661)
+scale = Vector2(10, 10)
+
+[node name="Wall111" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-28978, 1683)
+scale = Vector2(10, 10)
+
+[node name="Wall112" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-29596, 1683)
+scale = Vector2(10, 10)
+
+[node name="Wall113" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-30295, 3661)
+scale = Vector2(10, 10)
+
+[node name="Wall114" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-30913, 3661)
+scale = Vector2(10, 10)
+
+[node name="Wall115" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-30217, 1683)
+scale = Vector2(10, 10)
+
+[node name="Wall116" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-30835, 1683)
+scale = Vector2(10, 10)
+
+[node name="Wall117" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-31533, 3661)
+scale = Vector2(10, 10)
+
+[node name="Wall119" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-31455, 1683)
+scale = Vector2(10, 10)
+
+[node name="Wall120" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-32073, 1683)
+scale = Vector2(10, 10)
+
+[node name="Wall121" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-32073, 2302)
+scale = Vector2(10, 10)
+
+[node name="Wall122" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-32073, 2920)
+scale = Vector2(10, 10)
+
+[node name="Wall123" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-32073, 3540)
+scale = Vector2(10, 10)
+
+[node name="Wall88" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-20678, -1976)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall89" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-21180, -1612)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall90" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-21682, -1247)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall91" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-22184, -883)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall92" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-22683, -521)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall93" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-23185, -157)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall94" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-23687, 208.001)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall95" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-24189, 572)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall96" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-24690, 934)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall97" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-25192, 1298)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall98" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-25694, 1663)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall99" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-26196, 2027)
+rotation = -0.628319
+scale = Vector2(10, 10)
+
+[node name="Wall45" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-11629, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall46" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-12249, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall47" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-12868, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall48" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-11744, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall49" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-12364, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall50" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-12983, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall51" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-13603, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall52" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-14223, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall53" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-14842, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall54" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-13488, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall55" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-14108, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall56" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-14727, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall57" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-15461, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall58" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-16081, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall59" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-16700, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall60" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-15346, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall61" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-15966, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall62" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-16585, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall63" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-17316, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall64" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-17936, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall65" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-18555, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall66" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-17201, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall67" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-17821, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall68" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-18440, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall69" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-19175, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall70" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-19795, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall71" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-20414, -1866)
+scale = Vector2(10, 10)
+
+[node name="Wall72" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-19060, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall73" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-19680, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall74" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-20299, -708)
+scale = Vector2(10, 10)
+
+[node name="Wall42" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-10745, -1615)
+rotation = 0.628143
+scale = Vector2(10, 10)
+
+[node name="Wall29" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-6820, -710)
+scale = Vector2(10, 10)
+
+[node name="Wall30" parent="Map" instance=ExtResource("1_xv3u6")]
+position = Vector2(-4960, -710)
+scale = Vector2(10, 10)
+
+[node name="Door2" parent="Map" instance=ExtResource("7_hw113")]
+position = Vector2(-4545, -16)
+scale = Vector2(3, 3.3)
+
+[node name="Door3" parent="Map" instance=ExtResource("7_hw113")]
+position = Vector2(-8107, -16)
+scale = Vector2(3.5, 4)
+
+[node name="Door4" parent="Map" instance=ExtResource("7_hw113")]
+position = Vector2(-11141, -1208)
+rotation = 0.600241
+scale = Vector2(2.5, 2.75)
+
+[node name="Door5" parent="Map" instance=ExtResource("7_hw113")]
+position = Vector2(-20518, -1291)
+scale = Vector2(3, 3)
+
+[node name="Door6" parent="Map" instance=ExtResource("7_hw113")]
+position = Vector2(-26083, 2642)
+rotation = -0.628319
+scale = Vector2(2.5, 2.75)
 
 [node name="SpawnPoint1" type="Node2D" parent="Map"]
 position = Vector2(946, 217)
@@ -102,10 +589,744 @@ position = Vector2(-700, 217)
 [node name="SpawnPoint4" type="Node2D" parent="Map"]
 position = Vector2(-1000, -274)
 
+[node name="Background" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(853, -252)
+
+[node name="Background2" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(853, 260)
+
+[node name="Background3" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(341, -252)
+
+[node name="Background4" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(341, 260)
+
+[node name="Background5" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-171, -252)
+
+[node name="Background6" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-171, 260)
+
+[node name="Background46" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-26763, 2102)
+
+[node name="Background47" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-26763, 2614)
+
+[node name="Background48" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-27275, 2102)
+
+[node name="Background49" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-27275, 2614)
+
+[node name="Background51" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-26763, 3127)
+
+[node name="Background53" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-27275, 3127)
+
+[node name="Background111" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-27787, 2230)
+
+[node name="Background112" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-27787, 2742)
+
+[node name="Background113" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-28299, 2230)
+
+[node name="Background114" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-28299, 2742)
+
+[node name="Background115" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-27787, 3255)
+
+[node name="Background116" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-28299, 3255)
+
+[node name="Background117" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-28812, 2102)
+
+[node name="Background118" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-28812, 2614)
+
+[node name="Background119" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-29324, 2102)
+
+[node name="Background120" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-29324, 2614)
+
+[node name="Background121" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-28812, 3127)
+
+[node name="Background122" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-29324, 3127)
+
+[node name="Background123" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-29836, 2230)
+
+[node name="Background124" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-29836, 2742)
+
+[node name="Background125" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-30348, 2230)
+
+[node name="Background126" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-30348, 2742)
+
+[node name="Background127" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-29836, 3255)
+
+[node name="Background128" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-30348, 3255)
+
+[node name="Background129" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-30860, 2102)
+
+[node name="Background130" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-30860, 2614)
+
+[node name="Background131" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-31372, 2102)
+
+[node name="Background132" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-31372, 2614)
+
+[node name="Background133" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-30860, 3127)
+
+[node name="Background134" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-31372, 3127)
+
+[node name="Background135" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-31884, 2230)
+
+[node name="Background136" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-31884, 2742)
+
+[node name="Background139" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-31884, 3255)
+
+[node name="Background7" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-683, -252)
+
+[node name="Background8" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-683, 260)
+
+[node name="Background9" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-1195, -252)
+
+[node name="Background10" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-1195, 260)
+
+[node name="Background11" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-1707, -252)
+
+[node name="Background12" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-1707, 260)
+
+[node name="Background13" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-2218, -252)
+
+[node name="Background14" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-2218, 260)
+
+[node name="Background15" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-2730, -252)
+
+[node name="Background16" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-2730, 260)
+
+[node name="Background17" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-3242, -252)
+
+[node name="Background18" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-3242, 260)
+
+[node name="Background19" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-3754, -252)
+
+[node name="Background20" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-3754, 260)
+
+[node name="Background21" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-4266, -252)
+
+[node name="Background22" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-4266, 260)
+
+[node name="Background23" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-4778, -252)
+
+[node name="Background24" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-4778, 260)
+
+[node name="Background25" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-5291, -252)
+
+[node name="Background26" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-5291, 260)
+
+[node name="Background27" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-5803, -252)
+
+[node name="Background28" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-5803, 260)
+
+[node name="Background29" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-6315, -252)
+
+[node name="Background30" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-6315, 260)
+
+[node name="Background31" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-6827, -252)
+
+[node name="Background32" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-6827, 260)
+
+[node name="Background33" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-7339, -252)
+
+[node name="Background34" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-7339, 260)
+
+[node name="Background35" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-7851, -252)
+
+[node name="Background36" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-7851, 260)
+
+[node name="Background37" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-8364, -252)
+
+[node name="Background38" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-8364, 260)
+
+[node name="Background39" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-8876, -252)
+
+[node name="Background40" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-8876, 260)
+
+[node name="Background41" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-9388, -252)
+
+[node name="Background42" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-9388, 260)
+
+[node name="Background43" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-9900, -252)
+
+[node name="Background44" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-9900, 260)
+
+[node name="Background45" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-10412, -252)
+
+[node name="Background50" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-8876, -763)
+
+[node name="Background52" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-9388, -763)
+
+[node name="Background54" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-9900, -763)
+
+[node name="Background55" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-10412, -1275)
+
+[node name="Background56" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-10412, -763)
+
+[node name="Background57" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-10924, -1275)
+
+[node name="Background60" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-10924, -1288)
+scale = Vector2(1, 1.05078)
+
+[node name="Background61" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-11435, -1288.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background62" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-11947, -1289)
+scale = Vector2(1, 1.05566)
+
+[node name="Background63" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-12458, -1288.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background64" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-12970, -1289)
+scale = Vector2(1, 1.05566)
+
+[node name="Background65" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-13482, -1288.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background66" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-13994, -1289)
+scale = Vector2(1, 1.05566)
+
+[node name="Background67" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-14505, -1288.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background68" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-15017, -1289)
+scale = Vector2(1, 1.05566)
+
+[node name="Background69" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-15529, -1288.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background70" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-16041, -1289)
+scale = Vector2(1, 1.05566)
+
+[node name="Background71" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-16552, -1288.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background72" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-17064, -1289)
+scale = Vector2(1, 1.05566)
+
+[node name="Background73" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-17575, -1288.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background74" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-18087, -1289)
+scale = Vector2(1, 1.05566)
+
+[node name="Background75" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-18598, -1288.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background76" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-19110, -1289)
+scale = Vector2(1, 1.05566)
+
+[node name="Background77" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-19622, -1288.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background78" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-20134, -1289)
+scale = Vector2(1, 1.05566)
+
+[node name="Background79" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-20645, -1288.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background80" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-21157, -1289)
+scale = Vector2(1, 1.05566)
+
+[node name="Background81" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-20645, -748.5)
+scale = Vector2(1, 1.05566)
+
+[node name="Background82" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-21157, -748.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background83" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-21667, -883.5)
+scale = Vector2(1, 1.05566)
+
+[node name="Background84" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-22179, -883.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background85" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-21667, -343.25)
+scale = Vector2(1, 1.05566)
+
+[node name="Background86" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-22179, -343.5)
+scale = Vector2(1, 1.05566)
+
+[node name="Background88" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-22179, 197)
+scale = Vector2(1, 1.05566)
+
+[node name="Background89" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-22680, -344.5)
+scale = Vector2(1, 1.05566)
+
+[node name="Background90" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-22680, 196)
+scale = Vector2(1, 1.05566)
+
+[node name="Background95" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-22669, 735)
+scale = Vector2(1, 1.05566)
+
+[node name="Background91" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-23180, 196.25)
+scale = Vector2(1, 1.05566)
+
+[node name="Background92" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-23180, 736.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background93" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-23692, 600.25)
+scale = Vector2(1, 1.05566)
+
+[node name="Background94" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-23692, 1140.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background96" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-24204, 871.25)
+scale = Vector2(1, 1.05566)
+
+[node name="Background97" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-24204, 1411.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background98" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-24204, 1952)
+scale = Vector2(1, 1.05566)
+
+[node name="Background99" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-24715, 1281.25)
+scale = Vector2(1, 1.05566)
+
+[node name="Background100" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-24715, 1821.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background101" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-24715, 2362)
+scale = Vector2(1, 1.05566)
+
+[node name="Background102" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-25227, 1416.25)
+scale = Vector2(1, 1.05566)
+
+[node name="Background103" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-25227, 1956.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background104" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-25227, 2497)
+scale = Vector2(1, 1.05566)
+
+[node name="Background105" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-25739, 1686.25)
+scale = Vector2(1, 1.05566)
+
+[node name="Background106" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-25739, 2226.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background107" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-25739, 2767)
+scale = Vector2(1, 1.05566)
+
+[node name="Background108" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-26250, 2089.25)
+scale = Vector2(1, 1.05566)
+
+[node name="Background109" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-26250, 2629.75)
+scale = Vector2(1, 1.05566)
+
+[node name="Background110" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-26250, 3170)
+scale = Vector2(1, 1.05566)
+
+[node name="Background87" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-21155, -208)
+scale = Vector2(1, 1.05566)
+
+[node name="Background58" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-10924, -763)
+
+[node name="Background59" parent="Map" instance=ExtResource("5_6i06m")]
+z_index = -5
+position = Vector2(-11436, -763)
+
+[node name="Window" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-724, 4)
+scale = Vector2(6, 6)
+
+[node name="Window2" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-2097, 0)
+scale = Vector2(6, 6)
+
+[node name="Window3" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-3720, 0)
+scale = Vector2(6, 6)
+
+[node name="Window4" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-5212, 0)
+scale = Vector2(6, 6)
+
+[node name="Window5" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-6260, 0)
+scale = Vector2(6, 6)
+
+[node name="Window9" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-12559, -1291)
+scale = Vector2(6, 6)
+
+[node name="Window10" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-16081, -1291)
+scale = Vector2(6, 6)
+
+[node name="Window11" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-19680, -1291)
+scale = Vector2(6, 6)
+
+[node name="Window12" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-18130, -1291)
+scale = Vector2(6, 6)
+
+[node name="Window13" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-14418, -1291)
+scale = Vector2(6, 6)
+
+[node name="Window14" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-21114, -979)
+rotation = -0.628319
+scale = Vector2(6, 6)
+
+[node name="Window15" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-22110, -255)
+rotation = -0.628319
+scale = Vector2(6, 6)
+
+[node name="Window16" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-23253, 582)
+rotation = -0.628319
+scale = Vector2(6, 6)
+
+[node name="Window17" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-24339, 1414)
+rotation = -0.628319
+scale = Vector2(6, 6)
+
+[node name="Window18" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-26873, 2789)
+scale = Vector2(10, 10)
+
+[node name="Window19" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-31167, 2789)
+scale = Vector2(10, 10)
+
+[node name="Window6" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-7590, 0)
+scale = Vector2(6, 6)
+
+[node name="Window7" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-8791, -103)
+rotation = 0.174995
+scale = Vector2(6, 6)
+
+[node name="Window8" parent="Map" instance=ExtResource("6_bxxnu")]
+position = Vector2(-10540, -765)
+rotation = 0.682127
+scale = Vector2(6, 6)
+
 [node name="Player" parent="." instance=ExtResource("3_eiwoc")]
 position = Vector2(-1, 1)
 
 [node name="UI" parent="." instance=ExtResource("4_8si7y")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.154876, 0.154876, 0.154876, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -198.0
+offset_top = -176.0
+offset_right = 213.0
+offset_bottom = 1.0
+theme_override_constants/line_spacing = 15
+theme_override_fonts/font = ExtResource("9_b1r0b")
+theme_override_font_sizes/font_size = 24
+text = "AD or Arrow Keys to Move
+W, Up, or Space to Jump
+Left Click to throw potion
+1-3 to change potion"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1382.0
+offset_top = -201.0
+offset_right = 1810.0
+offset_bottom = -24.0001
+rotation = 0.848983
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 45
+theme_override_fonts/font = ExtResource("9_b1r0b")
+theme_override_font_sizes/font_size = 12
+text = "imposter was not the imposter
+(30 imposters remain)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -360.0
+offset_top = 96.0
+offset_right = 364.0
+offset_bottom = 237.0
+theme_override_fonts/font = ExtResource("9_b1r0b")
+theme_override_font_sizes/font_size = 32
+text = "STAY OUT OF ANY EXTERNAL LIGHT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Amogus" type="Sprite2D" parent="."]
+position = Vector2(1462, 27)
+rotation = 1.02837
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_wawmq")
+
+[node name="EnemyDie" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ubc6t")
 
 [connection signal="die" from="Player" to="." method="_on_player_die"]
 [connection signal="potion_toss" from="Player" to="." method="_on_player_potion_toss"]

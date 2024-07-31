@@ -1,21 +1,51 @@
-[gd_scene load_steps=8 format=3 uid="uid://0253q7vlshtb"]
+[gd_scene load_steps=18 format=3 uid="uid://0253q7vlshtb"]
 
 [ext_resource type="Script" path="res://code/player.gd" id="1_f5cmv"]
-[ext_resource type="Texture2D" uid="uid://bxup0d0k8mqgu" path="res://art/prototypeArt/prototypingArt14.png" id="2_g0p4j"]
+[ext_resource type="Texture2D" uid="uid://dx64plqbr6pm6" path="res://art/player0.png" id="2_yrv3e"]
 [ext_resource type="Script" path="res://code/look.gd" id="3_d4qjy"]
+[ext_resource type="Texture2D" uid="uid://teq1ryykcpvn" path="res://art/prototypeArt/prototypingArt04.png" id="4_8o854"]
+[ext_resource type="AudioStream" uid="uid://cnxe6j2ig83k2" path="res://audio/death.wav" id="5_e3g0l"]
+[ext_resource type="AudioStream" uid="uid://06k00jmqldts" path="res://audio/potionThrow.mp3" id="6_ulq62"]
+[ext_resource type="AudioStream" uid="uid://daxcxcurw0lhd" path="res://audio/pickUpPotion.wav" id="7_p0h8g"]
+[ext_resource type="AudioStream" uid="uid://cgeg62pcq65vt" path="res://audio/playerJump.wav" id="8_xs355"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t46xc"]
 friction = 0.96
 absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bgf27"]
-radius = 27.074
+radius = 24.0208
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmfvn"]
-radius = 28.0
+radius = 25.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61cwj"]
-size = Vector2(64, 20)
+size = Vector2(58, 20)
+
+[sub_resource type="Curve" id="Curve_tq8dv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.516483), 6.65055, 6.65055, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_6ig76"]
+colors = PackedColorArray(0.783523, 0.783523, 0.783523, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_v5fha"]
+offsets = PackedFloat32Array(0, 0.701299)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rcfpj"]
+gradient = SubResource("Gradient_v5fha")
+width = 512
+height = 512
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Curve" id="Curve_5dxtx"]
+max_value = 4.0
+_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(1e-05, 4), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Player" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_t46xc")
@@ -27,9 +57,9 @@ script = ExtResource("1_f5cmv")
 shape = SubResource("CircleShape2D_bgf27")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(9.53674e-07, 1.90735e-06)
-scale = Vector2(0.105469, 0.105469)
-texture = ExtResource("2_g0p4j")
+position = Vector2(2.86102e-06, -3.8147e-06)
+scale = Vector2(0.21875, 0.21875)
+texture = ExtResource("2_yrv3e")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -39,6 +69,7 @@ shape = SubResource("CircleShape2D_gmfvn")
 [node name="WallDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector"]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_61cwj")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -47,6 +78,72 @@ script = ExtResource("3_d4qjy")
 [node name="looker" type="Node2D" parent="Node2D"]
 position = Vector2(100, 0)
 scale = Vector2(0.160156, 0.160156)
+
+[node name="Stunned" type="CPUParticles2D" parent="."]
+emitting = false
+speed_scale = 1.5
+randomness = 1.0
+draw_order = 1
+texture = ExtResource("4_8o854")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 200)
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+linear_accel_min = 1.0
+linear_accel_max = 100.0
+radial_accel_min = 1.0
+radial_accel_max = 400.0
+tangential_accel_min = 1.0
+tangential_accel_max = 400.0
+damping_min = 1.0
+damping_max = 400.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.01
+scale_amount_max = 0.05
+scale_amount_curve = SubResource("Curve_tq8dv")
+color_initial_ramp = SubResource("Gradient_6ig76")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.8
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_rcfpj")
+height = 1.0
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_e3g0l")
+
+[node name="ThrowPotion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ulq62")
+
+[node name="PickUpPotion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_p0h8g")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_xs355")
+
+[node name="JumpParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 29)
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_5dxtx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_body_entered"]

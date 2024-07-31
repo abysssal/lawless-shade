@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://dmvw77587ub6m"]
+
+[ext_resource type="Script" path="res://code/juggernaut.gd" id="1_fpuov"]
+[ext_resource type="Texture2D" uid="uid://buddns8v7v3rq" path="res://art/juggernaut0.png" id="2_0nkyx"]
+[ext_resource type="AudioStream" uid="uid://dmm67eko4fsk8" path="res://audio/enemyDeath.wav" id="3_5h4wm"]
+[ext_resource type="AudioStream" uid="uid://b7xi0mvcucx51" path="res://audio/enemyJump.wav" id="4_baxff"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2w5o"]
+radius = 29.0689
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30pl4"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm717"]
+size = Vector2(41, 7)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujysk"]
+bg_color = Color(0, 0, 0, 0.470588)
+skew = Vector2(0.1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvvaj"]
+bg_color = Color(0.976471, 0.235294, 0.313726, 1)
+skew = Vector2(0.1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="Curve" id="Curve_l3uqj"]
+max_value = 4.0
+_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(1e-05, 4), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Juggernaut" type="RigidBody2D" groups=["enemy", "juggernaut"]]
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_fpuov")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p2w5o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.43051e-06, -4.76837e-07)
+scale = Vector2(0.234375, 0.234375)
+texture = ExtResource("2_0nkyx")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy", "juggernaut"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_30pl4")
+
+[node name="bottom" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom"]
+position = Vector2(-1.5, 29.5)
+shape = SubResource("RectangleShape2D_jm717")
+
+[node name="Health" type="ProgressBar" parent="."]
+offset_left = -42.0
+offset_top = -46.0
+offset_right = 42.0
+offset_bottom = -38.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ujysk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tvvaj")
+value = 50.0
+show_percentage = false
+
+[node name="EnemyDie" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5h4wm")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_baxff")
+
+[node name="JumpParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 29)
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_l3uqj")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered_area"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited_area"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="bottom" to="." method="_on_bottom_body_exited"]

@@ -1,16 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvvdl6128hw5i"]
+[gd_scene load_steps=12 format=3 uid="uid://dvvdl6128hw5i"]
 
-[ext_resource type="Texture2D" uid="uid://bbea1y50xab0u" path="res://art/prototypeArt/prototypingArt10.png" id="1_7kg43"]
 [ext_resource type="Script" path="res://code/walker.gd" id="1_n3rh5"]
+[ext_resource type="Texture2D" uid="uid://cqcenybod3mqo" path="res://art/walker0.png" id="2_uwlwe"]
+[ext_resource type="Texture2D" uid="uid://crxs8g2l1ke2j" path="res://art/effectSwirl.png" id="3_ld4yw"]
+[ext_resource type="AudioStream" uid="uid://dmm67eko4fsk8" path="res://audio/enemyDeath.wav" id="4_un0l1"]
+[ext_resource type="AudioStream" uid="uid://b7xi0mvcucx51" path="res://audio/enemyJump.wav" id="5_tr427"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2w5o"]
-radius = 29.0689
+radius = 23.0217
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30pl4"]
-size = Vector2(60, 60)
+size = Vector2(52, 55)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jm717"]
-size = Vector2(41, 7)
+size = Vector2(38, 7)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujysk"]
 bg_color = Color(0, 0, 0, 0.470588)
@@ -37,28 +40,35 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
-[node name="Walker" type="RigidBody2D" groups=["walker"]]
+[sub_resource type="Curve" id="Curve_16x6n"]
+max_value = 4.0
+_data = [Vector2(0, 6), 0.0, 0.0, 0, 0, Vector2(1e-05, 4), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Walker" type="RigidBody2D" groups=["enemy", "walker"]]
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_n3rh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_p2w5o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-9.53674e-07, -9.53674e-07)
-scale = Vector2(0.117188, 0.117188)
-texture = ExtResource("1_7kg43")
+position = Vector2(-1.43051e-06, 2.38419e-06)
+scale = Vector2(0.234375, 0.234375)
+texture = ExtResource("2_uwlwe")
 
-[node name="Area2D" type="Area2D" parent="." groups=["walker"]]
+[node name="Area2D" type="Area2D" parent="." groups=["enemy", "walker"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_30pl4")
 
 [node name="bottom" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottom"]
-position = Vector2(-1.5, 29.5)
+position = Vector2(0, 29.5)
 shape = SubResource("RectangleShape2D_jm717")
 
 [node name="Health" type="ProgressBar" parent="."]
@@ -70,6 +80,56 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ujysk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_tvvaj")
 value = 50.0
 show_percentage = false
+
+[node name="PotionParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 25
+preprocess = 3.0
+explosiveness = 0.15
+texture = ExtResource("3_ld4yw")
+emission_shape = 3
+emission_rect_extents = Vector2(50, 1)
+direction = Vector2(0, 0)
+gravity = Vector2(0, -980)
+initial_velocity_max = 20.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+linear_accel_min = -60.0
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+damping_min = 35.0
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.0
+scale_amount_max = 0.1
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="EnemyDie" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_un0l1")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_tr427")
+
+[node name="JumpParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 29)
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_16x6n")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered_area"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited_area"]

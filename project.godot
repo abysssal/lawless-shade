@@ -11,17 +11,12 @@ config_version=5
 [application]
 
 config/name="LawlessShade"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/title_screen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://art/potion.png"
-
-[autoload]
-
-DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
-RigidBodyAutoScaler="*res://addons/rigidbody_auto_scaler/RigidBodyAutoScaler.gd"
 
 [dotnet]
 
@@ -90,3 +85,4 @@ leftClick={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

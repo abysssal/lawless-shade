@@ -1,21 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://cghdu22o201uu"]
+[gd_scene load_steps=9 format=3 uid="uid://cghdu22o201uu"]
 
+[ext_resource type="Script" path="res://code/menu.gd" id="1_i1c8k"]
 [ext_resource type="FontFile" uid="uid://br2nfbspdbh53" path="res://art/fonts/FFFFORWA.TTF" id="1_mvstq"]
-[ext_resource type="Script" path="res://code/gameOverUi.gd" id="1_sqd57"]
 [ext_resource type="Texture2D" uid="uid://bl0x0uyc1ouv3" path="res://art/restart.png" id="2_yaekb"]
+[ext_resource type="AudioStream" uid="uid://cnxe6j2ig83k2" path="res://audio/death.wav" id="4_n4fml"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yb540"]
-bg_color = Color(0.260653, 0.180545, 0.339923, 1)
-border_width_left = 50
-border_width_top = 50
-border_width_right = 50
-border_width_bottom = 50
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
 border_color = Color(0, 0, 0, 1)
 border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_a26yl"]
 font = ExtResource("1_mvstq")
 font_size = 48
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+outline_color = Color(0.47788, 0.47788, 0.47788, 1)
+shadow_color = Color(0.362829, 0.362829, 0.362829, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tudc4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4deup"]
+bg_color = Color(0, 0, 0, 0.427451)
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -24,7 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_sqd57")
+script = ExtResource("1_i1c8k")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -43,14 +57,23 @@ horizontal_alignment = 1
 
 [node name="Retry" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 374.0
-offset_top = 431.0
-offset_right = 514.0
-offset_bottom = 484.0
+offset_left = 405.0
+offset_top = 295.0
+offset_right = 729.0
+offset_bottom = 394.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_mvstq")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tudc4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4deup")
+shortcut_feedback = false
 text = "Retry"
 icon = ExtResource("2_yaekb")
+text_overrun_behavior = 3
 expand_icon = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_n4fml")
+autoplay = true
 
 [connection signal="button_up" from="Panel/Retry" to="." method="_on_button_pressed"]

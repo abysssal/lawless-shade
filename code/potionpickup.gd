@@ -6,5 +6,5 @@ var quantity : int
 
 func _ready():
 	modulate = color
-	apply_impulse(Vector2(randi_range(-1000, 1000), randi_range(-1000, 1000)))
+	apply_impulse(Vector2(randi_range(-500, 500), randi_range(-500, 500)))
 

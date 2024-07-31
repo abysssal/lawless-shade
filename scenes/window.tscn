@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn2jl02cpgl0i"]
+
+[ext_resource type="Script" path="res://code/window.gd" id="1_txlr4"]
+[ext_resource type="Texture2D" uid="uid://3oitvdcegwd6" path="res://art/window.png" id="2_tbenw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t86oh"]
+size = Vector2(28, 50)
+
+[sub_resource type="Gradient" id="Gradient_w5orm"]
+offsets = PackedFloat32Array(0, 0.701299)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3a5d1"]
+gradient = SubResource("Gradient_w5orm")
+width = 256
+height = 256
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[node name="Window" type="Area2D"]
+script = ExtResource("1_txlr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t86oh")
+
+[node name="Light" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 2.98023e-08)
+scale = Vector2(0.0976562, 0.0996094)
+texture = ExtResource("2_tbenw")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_3a5d1")
+height = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
