@@ -151,4 +151,4 @@ Sound effects will be generated with JSFXR to complement the pixel art style of 
 	- [x] Title Screen
 	- [x] Redo Death Screen
 	- [x] **PLAYTEST**
-	- [ ] ***SUBMIT!***
+	- [x] ***SUBMIT!***
